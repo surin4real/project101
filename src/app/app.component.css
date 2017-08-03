@@ -1,0 +1,53 @@
+.securecheckout img {
+    height: 20px;
+    width: 80%;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+nav {
+  -webkit-box-shadow:0 0 4px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);
+ -moz-box-shadow:    0 0 4px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);    
+ box-shadow: 0 0 4px rgba(0,0,0,.14), 0 2px 4px rgba(0,0,0,.28);
+ 
+}
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .nav-link {
+    color: rgba(249, 245, 245, 0.9);
+}
+nav a {
+    color: rgba(249, 245, 245, 0.9);
+}
+.app-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
+}
+
+.app-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.fixed  {
+  position: fixed !important;
+  top: 0px;
+  z-index:999;
+}
+.app-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
+}
+.silver-text {
+    color: #ccd;
+}

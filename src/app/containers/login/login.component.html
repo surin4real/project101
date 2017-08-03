@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="container text-center">
+    <div *ngIf="!auth.currentUser">
+      <h4 class="bluegrey"> Log In  to Glo Thai Tour</h4>
+     
+      <button md-raised-button class="logButton" color="primary" (click)="signInWithFacebook()">Log in with facebook</button>
+  
+      <button md-raised-button class="logButton" color="accent" (click)="signInWithGoogle()">Log in with google</button>
+      <div>
+        <div class="m30 clearfix"></div>
+      <small><em> Click above to log in</em></small>
+      <p>For now we accept Auth2 Authentications from facebook and google</p>
+      </div>
+
+ 
+     
+  </div>
+</div>

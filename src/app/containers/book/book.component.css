@@ -1,0 +1,32 @@
+@media screen and (min-width: 700px){
+.container {
+    width: 600px !important;
+}
+}
+.bluegrey .img-thumbnail{
+    width: 100px;
+    height: 80px;
+}
+.text-center-im {
+    display: block;
+    margin: 0 auto;
+}
+.greytext {
+   font-style: italic;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ccd;
+}
+.input-width md-input-container {
+    width: 100%;
+}
+.btn-pay{
+    padding:15px 0;
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+.img-pay {
+    height: 50px;
+    margin: 10px 0;
+    width: 70%;
+}

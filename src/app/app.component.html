@@ -1,20 +1,71 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class=" container-fluid">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" color="primary" style="background-color: #616161; color:#fff">
+ 
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/">
+    <img src="./assets/logo.png"  class="d-inline-block align-top" alt="">
+  </a>
 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about">About Us</a>
+      </li>
+
+    </ul>
+    <ul class="nav float-right">
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-phone" aria-hidden="true"></i> 01 803849273</a></li>
+            <span *ngIf="auth.authenticated">
+            <li class="nav-item"><a class="nav-link" routerLink="/profile/{{ auth.currentUserId }}/{{ auth.currentUser.displayName }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Account</a></li>
+            </span>
+          <li *ngIf="!auth.authenticated" class="nav-item"><a class="nav-link" routerLink="/login"><i class="fa fa-user-circle-o" aria-hidden="true"></i> My Account</a></li>
+            <li class="nav-item"><a class="nav-link" href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
+            
+          </ul>
+  </div>
+</nav>
+</div>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>
+  <footer class="page-footer grey darken-4" style="background-color: #616161;">
+          <div class="container ">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text"><img src="./assets/logo.png" alt="Glotourguider"></h5>
+                <p class="silver-text text-lighten-4">
+                  Start planning your tour now. With our experienced guides, you are in for a good ride!
+                </p>
+                <p class="silver-text">WWW.GLOTOURGUIDER.COM</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="silver-text">About GLOTOURGUIDER.COM</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" routerLink="about">About us</a></li>
+                  <li><a class="grey-text text-lighten-3" routerLink="contact">Contact us</a></li>
+                  <li><a class="grey-text text-lighten-3" routerLink="termsofuse">Terms of use</a></li>
+                  <li><a class="grey-text text-lighten-3" routerLink="booking/refund">Refund</a></li>
+                  <li><a class="grey-text text-lighten-3" routerLink="privacy">Privacy and security</a></li>
+                </ul>
+              <div class="securecheckout">
+                <h4 style="font-style: italic;">Checkout Securely with the best payment gateways!</h4>
+              <div>
+                <img  src="./assets/img/securecheckout.png" alt="secure checkout">
+              </div>
+
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright grey darken-3">
+            <div class="container">
+            © 2014 Copyright GLOTOURGUIDER.COM Reserved
+            <a class="grey-text text-lighten-4 right" href="#!">English</a>
+            </div>
+          </div>
+        </footer>

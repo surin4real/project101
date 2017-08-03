@@ -1,0 +1,28 @@
+.innertube {
+    padding: 10px;
+}
+.ribbon {
+ position: relative;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 0;
+  height: 101px;
+  border: 50px solid #1abc9c;
+  border-top: 0 solid;
+  border-bottom: 35px solid rgba(0,0,0,0);
+  font: normal normal bold 100%/normal "Comic Sans MS", cursive, sans-serif;
+  color: rgba(0,0,0,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  -webkit-transform: rotateZ(-34.37746770784939deg)   ;
+  transform: rotateZ(-34.37746770784939deg)   ;
+  right:0;
+}
+.bold {
+    font-weight: bold;
+}
+.text-right {
+    text-align: right !important;
+    float: right;
+}

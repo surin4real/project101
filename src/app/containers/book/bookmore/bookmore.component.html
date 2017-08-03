@@ -1,0 +1,274 @@
+<div  class="container-fluid" *ngIf="tour" >
+ 
+    <form *ngIf="!checkoutOk && keepsafe" name="bookForm" [formGroup]="bookForm"  (ngSubmit)="submitForm(bookForm.value)">
+      <table class="table table-bordered table-hover table-responsive">
+        <thead>
+          <tr>
+              <th>Tour</th>
+              <th>Cost</th>
+              <th>Tour Date</th>
+              <th>Number of Persons</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="bluegrey title">
+              <h4>{{tour.t_name}}</h4>
+              <img src="{{tour.t_img}}" alt="{{tour.t_name}}" class="img-thumbnail float-left">
+              <img src="{{tour.t_img1}}" alt="{{tour.t_name}}" class="img-thumbnail float-left">
+            </td>
+            <td class="large">${{tour.t_price}}</td>
+     
+            <td>
+              
+              <div class="input-field innertube">
+                 <div class="form-group" [ngClass]="{'has-error':!bookForm.controls['bookdate'].valid && bookForm.controls['bookdate'].touched}">
+                    <label>Choose Date<span class="red-text">*</span> <span *ngIf="bookForm.controls['bookdate'].hasError('required') && bookForm.controls['bookdate'].touched" class="red-text">*</span></label><br><br>
+                  
+                 <input
+                 class="form-control"
+                [formControl]="bookForm.controls['bookdate']"
+                [(ngModel)]='myVar'
+                formControlName="bookdate"
+                ngui-datetime-picker
+                  date-only="true"/>
+
+                 </div>
+              </div>
+            </td>
+            <td>
+              
+                <div class="input-field innertube">
+                  
+                 <div class="form-group" [ngClass]="{'has-error':!bookForm.controls['bookadults'].valid && bookForm.controls['bookadults'].touched}">
+                   <label>Adults<span class="red-text">*</span> <span *ngIf="bookForm.controls['bookadults'].hasError('required') && bookForm.controls['bookadults'].touched" class="red-text">*</span></label><br><br>
+                  <select class="form-control" id="bookadults" [value]="adults"  #bookadults [formControl]="bookForm.controls['bookadults']">
+                    <option value="" disabled selected>Adults</option>
+                    <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                    <option [value]="4">4</option>
+                    <option [value]="5">5</option>
+                    <option [value]="6">6</option>
+                  </select>
+                
+                  
+                 </div>
+                  
+               
+                  <div *ngIf="tour.t_kid_price > 0" class="form-group" [ngClass]="{'has-error':!bookForm.controls['bookkids'].valid && bookForm.controls['bookkids'].touched}">
+                     <label >Children <span *ngIf="bookForm.controls['bookkids'].hasError('required') && bookForm.controls['bookkids'].touched" class="red-text">*</span></label><br><br>
+                  <select class="form-control" #bookkids id="bookkids" *ngIf="tour.t_kid_price > 0" [formControl]="bookForm.controls['bookkids']" [value]="adults">
+                    <option value="" disabled selected>Kids</option>
+                     <option [value]="1">1</option>
+                    <option [value]="2">2</option>
+                    <option [value]="3">3</option>
+                    <option [value]="4">4</option>
+                    <option [value]="5">5</option>
+                    <option [value]="6">6</option>
+                  </select>
+                 
+                </div>
+                  
+                  </div>
+              
+               
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+<div class="row ">
+  <div class="col-md-4">
+    Tour cost Per Person<br>
+    <div class="greytext">${{tour.t_price}}</div>
+  </div>
+   <div class="col-md-4 greytext m-text">
+    Number of Persons <br> {{adults}} <span *ngIf="tour.t_kid_price > 0">and {{kids}}</span>
+  </div>
+   <div class="col-md-4">
+    <h4 class="bluegrey large">Total Cost For Tour</h4>
+    <h3 class="green-text">${{total_price}}.00</h3>
+    <em class="red-text">{{message}}</em><br>
+    <button md-raised-button color="accent" type="submit" [disabled]="!bookForm.valid">Click to continue</button>
+    <div class=" m30"></div>
+  </div>
+  
+</div>
+<div class="clearfix"></div>
+</form>
+</div>
+
+
+
+<div  class="container-fluid" *ngIf="auth.currentUser">
+  <md-card class="container">
+    <div *ngIf="checkoutOk" class="input-width">
+         <h4 class="alert alert-info text-center">Your Checkout Details:</h4>
+       <form  *ngIf="infoForm"  name="infoForm" [formGroup]="infoForm"  (ngSubmit)="submitInfo(infoForm.value)">
+         <div class="row">
+           <div class="col-md-6">
+             <div class="form-group" [ngClass]="{'has-error':!infoForm.controls['firstname'].valid && infoForm.controls['firstname'].touched}">
+            <md-input-container>
+                <input mdInput placeholder="First Name" [formControl]="infoForm.controls['firstname']">
+              </md-input-container>
+             </div>
+           </div>
+             <div class="col-md-6">
+               <div class="form-group" [ngClass]="{'has-error':!infoForm.controls['firstname'].valid && infoForm.controls['firstname'].touched}">
+            <md-input-container>
+                <input mdInput placeholder="Last Name" [formControl]="infoForm.controls['lastname']">
+              </md-input-container>
+               </div>
+           </div>
+         </div>
+          <div>
+              <div class="form-group" [ngClass]="{'has-error':!infoForm.controls['email'].valid && infoForm.controls['email'].touched}">
+            <md-input-container>
+                <input mdInput placeholder="Enter Email" [formControl]="infoForm.controls['email']" type="email" disabled value="{{auth.currentUser.email}}" >
+              </md-input-container>
+              <div *ngIf="infoForm.controls['email'].hasError('email') && infoForm.controls['email'].touched" class="red-text">Invalid Email</div>
+               </div>
+
+               <div class="form-group" [ngClass]="{'has-error':!infoForm.controls['confirmemail'].valid && infoForm.controls['confirmemail'].touched}" >
+            <md-input-container>
+                <input mdInput placeholder="Confirm Email" [formControl]="infoForm.controls['confirmemail']" type="email" disabled value="{{auth.currentUser.email}}" > 
+              </md-input-container>
+              <div *ngIf="infoForm.controls['confirmemail'].hasError('email') && infoForm.controls['confirmemail'].touched" class="red-text" >Invalid Confirm Email</div>
+               </div>
+          </div>
+         <em class="red-text">{{messageAlmost}}</em><br>
+          <button class="pull-right" md-raised-button color="accent" type="submit" >Proceed to checkout</button>
+       </form>
+        <div class="clearfix"></div>
+    </div>
+      <div *ngIf="checkoutOkay">
+        <div class="text-center">
+    <em class="greytext"><b>{{auth.currentUserDisplayName}}</b>, Receipt will be sent to the following email: <span class="bluegrey">{{auth.currentUser.email}}</span> associated with your account!</em><br>
+  <em class="greytext">Did you read our refund policy? <a routerLink="/booking/refund">Refund Policy</a> </em>
+  <h5 class="bluegrey"> You'll pay ${{total_price}} for this tour!</h5>
+        </div>
+  <div class=" m30"></div>
+  <md-tab-group *ngIf="tour">
+  <md-tab >
+    <ng-template md-tab-label>
+      Paypal
+    </ng-template>
+     <h3 class="text-center">Pay With Paypal</h3>
+          <form #form class="form-inline center-align" name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="fordoh89@gmail.com">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="item_name" value="{{tour.t_name}}">
+            <input name="item_number" type="hidden" value=""/>
+            <input type="hidden" name="amount" value="{{total_price}}">
+            <input type="hidden" name="return" value="https://angular2courses.com/checkout/success" />
+            <input type="hidden" name="cancel_return" value="https://angular2courses.com/checkout/cancelled" />
+            <input type="hidden" name="custom" value={{tour.t_name}}>
+            <!--pass your notification URL-->
+            <input name="notify_url"  value="http://angular2courses.website/Paypal/paypalipn.php" type="hidden"><br/><br/>
+            <input (click)="form.submit()" type="image" src="assets/button-p.png" border="0"  class="center-btn center-align"
+                        name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
+        </form>
+
+  </md-tab>
+      <md-tab>
+    <ng-template md-tab-label>
+      2Checkout/Credit card
+    </ng-template>
+     <h3 class="text-center">Click to Pay with card</h3>
+         <form #formcheck action='https://www.2checkout.com/checkout/purchase' method='post'>
+        <input type='hidden' name='sid' value='103339696' />
+        <input type='hidden' name='mode' value='2CO' />
+        <input type='hidden' name='li_0_type' value='product' />
+        <input type='hidden' name='li_0_name' value='{{tour.t_name}}' />
+        <input type='hidden' name='li_0_price' value='{{total_price}}' />
+        <input type='hidden' name='card_holder_name' value='' />
+        <input type='hidden' name='street_address' value='' />
+        <input type='hidden' name='street_address2' value='' />
+        <input type='hidden' name='city' value='' />
+        <input type='hidden' name='state' value='' />
+        <input type='hidden' name='zip' value='' />
+        <input type='hidden' name='country' value='' />
+        <input type='hidden' name='email' value='{{email}}' />
+        <input (click)="formcheck.submit()" name='submit' class="center-btn text-center-im" type="image" src="assets/2checkout-logo.png" />
+        </form>
+  </md-tab>
+  <md-tab>
+    <ng-template md-tab-label>
+      Credit/Debit card
+    </ng-template>
+    <h4 class="text-center">Use a Credit/Debit Card</h4>
+    <div class="text-center">
+     <button class="btn-pay"  (click)="handlePayment()" md-raised-button color="accent">
+      Click to pay ${{total_price}} securely!
+    </button>
+    <img class="img-pay" src="./assets/hostiso-stripe.png" alt="stripe Logo">
+    </div>
+    <!--
+         <div *ngIf="msg !== ''" class="alert alert-info">{{msg}}</div>
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><img class="pull-right" src="http://i76.imgup.net/accepted_c22e0.png"><br>Payment Details</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" id="payment-form" (submit)="getCardData(number.value, month.value,year.value,cvc.value)" action="post">
+            <div class="row">
+              <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                  <label for="cardNumber">CARD NUMBER</label>
+                  <div class="input-group">
+                    <input #number type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" required autofocus data-stripe="number"/>
+                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-7 col-md-9">
+                <div class="form-group">
+                  <label for="expMonth">EXPIRATION DATE</label>
+                  <div class="row">
+                  <div class="col-xs-6 col-lg-6 pl-ziro">
+                    <input #month type="text" class="form-control" id="expMonth" placeholder="MM" required data-stripe="exp_month"  />
+                  </div>
+                  <div class="col-xs-6 col-lg-6 pl-ziro">
+                    <input #year type="text" class="form-control" name="expYear" placeholder="YY" required data-stripe="exp_year" />
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-5 col-md-3 pull-right">
+                <div class="form-group">
+                  <label for="cvCode">CV CODE</label>
+                  <input #cvc type="password" class="form-control" id="cvCode" placeholder="CV" required data-stripe="cvc"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <button md-raised-button  color="accent" type="submit">Pay ${{total_price}} for this trip</button>
+              </div>
+            </div>
+            <div class="row" style="display:none;">
+              <div class="col-xs-12">
+                <p class="payment-errors"></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>-->
+  </md-tab>
+</md-tab-group>
+      </div>
+   <div class=" m30"></div>
+   
+  </md-card>
+</div>

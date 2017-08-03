@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './shared/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  isGrayTheme: boolean = true;
+
+  constructor(private auth: AuthService) { 
+  
+  }
+
+  logout() {
+    this.auth.signOut();
+  }
 }

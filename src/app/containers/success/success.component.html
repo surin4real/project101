@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="alert alert-success text-center">
+      <h3><i class="fa fa-check-circle-o" aria-hidden="true"></i>
+       You successfully booked a trip with us.</h3>
+      <p> Thank you for choosing Glo Thai Tour.</p>
+
+      <p> An email has been sent to your account email, containing your booking details, internary and all you would need to know about your trip.</p>
+
+      <h5><em>If you should have any questions, please do contact us. We would make contact if we should need more information to make proper arrangements for your tour.</em></h5>
+    </div>
+
+    <div *ngIf="tours" class="card">
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" src="./assets/img/glotour.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Glo Tour Thailand</h3>
+        <p>We organize city tours, in most cases inter city multi tours that span days. Choose the tour that suites u best.</p>
+      </div>
+    </div>
+    <div class="carousel-item" *ngFor="let tour of tours">
+      <img class="d-block img-fluid" src="{{tour.t_img}}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>{{tour.t_name}}</h3>
+        <p>{{tour.t_desc | shorten: 50: '..'}}</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  </div>
+</div>

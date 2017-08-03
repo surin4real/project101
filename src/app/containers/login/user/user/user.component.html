@@ -1,0 +1,11 @@
+
+<div class="container-fluid">
+   <div class="container text-center">
+      <div *ngIf="auth.currentUser">
+        <img class="user-img" [src]="auth.currentUser.photoURL || './assets/bg.jpg'" alt="{{ auth.currentUser.displayName }}">
+        <h3 class="bluegrey">Howdy, {{ auth.currentUser.displayName }}</h3>
+        <small class="grey-text"><em>Your Glo Thai Tour Profile</em></small><br>
+        <button md-raised-button color="accent" (click)="logout()">Logout</button>
+    </div>
+   </div>
+  </div>
